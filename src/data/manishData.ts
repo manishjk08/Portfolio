@@ -25,7 +25,7 @@ export const personalInfo = {
   name: "Manish Jamarkattel",
   title: "Full-Stack Developer",
   location: "Kathmandu, Nepal",
-  email: "1amarkattelmanish2@gmail.com",
+  email: "jamarkattelmanish2@gmail.com",
   phone: "9866121290",
   github: "github.com/manishjk08",
   bio: "Computer Science graduate (BSc CSIT) with practical experience in building responsive web applications using React.js and hands-on development in Node.js and Express.js. Proficient in PostgreSQL and familiar with REST API development, Git-based workflows, and Agile practices. Eager to contribute to software development and application support roles, with a strong interest in financial and banking systems.",
