@@ -1,0 +1,179 @@
+@import "tailwindcss";
+
+/* Tailwind v4 theme extension */
+@theme {
+  --color-primary: #CAAA98;
+  --color-secondary: #9A8678;
+  --color-accent: #4B4038;
+  --color-background: #F9F6F3;
+  --color-bg-warm: #F4EFE9;
+  --color-card-bg: #FDFAF8;
+  --color-text-dark: #2C2420;
+  --color-text-mid: #6B5B53;
+  --color-text-light: #A08F86;
+  --color-border: rgba(154, 134, 120, 0.18);
+  --color-border-hover: rgba(154, 134, 120, 0.35);
+  
+  --font-family-serif: "Cormorant Garamond", serif;
+  --font-family-sans: "DM Sans", sans-serif;
+  --font-family-mono: "DM Mono", monospace;
+  
+  --radius-card: 12px;
+  --radius-sm-card: 8px;
+  
+  --shadow-soft: 0 4px 16px rgba(75, 64, 56, 0.08), 0 2px 6px rgba(75, 64, 56, 0.04);
+  --shadow-sm-soft: 0 1px 3px rgba(75, 64, 56, 0.06), 0 1px 2px rgba(75, 64, 56, 0.04);
+  
+  --animate-fade-up: fadeUp 0.7s ease forwards;
+  --animate-pulse-slow: pulse 2.5s ease-in-out infinite;
+  
+  @keyframes fadeUp {
+    0% { opacity: 0; transform: translateY(24px); }
+    100% { opacity: 1; transform: translateY(0); }
+  }
+  
+  @keyframes pulse {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50% { opacity: 0.6; transform: scale(0.9); }
+  }
+}
+
+@layer base {
+
+  @keyframes scrollPulse {
+  0%, 100% { opacity: 0.4; transform: scaleY(0.8); }
+  50% { opacity: 1; transform: scaleY(1); }
+}
+
+.bg-gradient-radial {
+  background-image: radial-gradient(ellipse 80% 60% at 70% 40%, rgba(202,170,152,0.12) 0%, transparent 60%),
+                    radial-gradient(ellipse 50% 40% at 20% 70%, rgba(154,134,120,0.07) 0%, transparent 50%);
+}
+
+  html {
+    scroll-behavior: smooth;
+  }
+  
+  body {
+    background-color: var(--color-background);
+    color: var(--color-text-dark);
+    font-family: var(--font-family-sans);
+    -webkit-font-smoothing: antialiased;
+  }
+  
+  ::selection {
+    background-color: color-mix(in srgb, var(--color-primary) 30%, transparent);
+  }
+  
+  /* Custom scrollbar */
+  ::-webkit-scrollbar {
+    width: 6px;
+  }
+  ::-webkit-scrollbar-track {
+    background: var(--color-background);
+  }
+  ::-webkit-scrollbar-thumb {
+    background: var(--color-primary);
+    border-radius: 3px;
+  }
+}
+
+@layer components {
+  .section-header {
+    margin-bottom: 3rem;
+  }
+  
+  .section-label {
+    font-family: var(--font-family-mono);
+    font-size: 0.6875rem;
+    letter-spacing: 0.18em;
+    color: var(--color-secondary);
+    text-transform: uppercase;
+    margin-bottom: 0.75rem;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+  }
+  
+  .section-label::before {
+    content: '';
+    display: inline-block;
+    width: 1.5rem;
+    height: 1px;
+    background-color: var(--color-primary);
+  }
+  
+  .section-title {
+    font-family: var(--font-family-serif);
+    font-size: clamp(2rem, 4vw, 2.75rem);
+    font-weight: 300;
+    color: var(--color-accent);
+    line-height: 1.15;
+  }
+  
+  .section-title em {
+    font-style: italic;
+    color: var(--color-secondary);
+  }
+  
+  .btn-primary {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.75rem 1.75rem;
+    background-color: var(--color-accent);
+    color: #F9F6F3;
+    font-size: 0.875rem;
+    font-weight: 400;
+    letter-spacing: 0.04em;
+    border-radius: var(--radius-sm-card);
+    text-decoration: none;
+    border: none;
+    cursor: pointer;
+    transition: all 0.25s ease;
+  }
+  
+  .btn-primary:hover {
+    background-color: #3a3028;
+    transform: translateY(-1px);
+    box-shadow: var(--shadow-soft);
+  }
+  
+  .btn-secondary {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.75rem 1.75rem;
+    background-color: transparent;
+    color: var(--color-accent);
+    font-size: 0.875rem;
+    font-weight: 400;
+    letter-spacing: 0.04em;
+    border-radius: var(--radius-sm-card);
+    text-decoration: none;
+    border: 1px solid var(--color-border-hover);
+    cursor: pointer;
+    transition: all 0.25s ease;
+  }
+  
+  .btn-secondary:hover {
+    border-color: var(--color-primary);
+    background-color: color-mix(in srgb, var(--color-primary) 8%, transparent);
+    transform: translateY(-1px);
+  }
+  
+  .container-custom {
+    max-width: 1040px;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 2rem;
+    padding-right: 2rem;
+  }
+  
+  @media (max-width: 768px) {
+    .container-custom {
+      padding-left: 1.25rem;
+      padding-right: 1.25rem;
+    }
+  }
+}
